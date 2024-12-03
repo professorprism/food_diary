@@ -23,7 +23,7 @@ class FoodDiary extends StatelessWidget
   Widget build(BuildContext context) 
   { return MaterialApp
     ( title: header,
-      //home: BlocProvider<FDCubit>
+      // home: BlocProvider<FDCubit>
       home: BlocProvider<FDBloc>
       ( 
         // create: (context) => FDCubit(),
@@ -32,7 +32,7 @@ class FoodDiary extends StatelessWidget
         child: BlocBuilder<FDBloc,FDState> 
         ( builder: (context,state)
           { 
-            // FDCubit fdc = BlocProvider.of<FDCubit>(context>;
+            // FDCubit fdc = BlocProvider.of<FDCubit>(context);
             FDBloc fdc =  BlocProvider.of<FDBloc>(context);
             return  Splash(title: header, fdc:fdc);
           },
@@ -51,7 +51,7 @@ class Splash extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   { 
-    // FDCubit fdc = BlocProvider.of<FDCubit>(context>;
+    // FDCubit fdc = BlocProvider.of<FDCubit>(context);
     FDBloc fdc = BlocProvider.of<FDBloc>(context);
     FDState fds = fdc.state;
     TextEditingController tec = TextEditingController();
@@ -68,7 +68,7 @@ class Splash extends StatelessWidget
           ElevatedButton
           ( onPressed: ()
             { 
-              //fdc.setFood(tec.text); 
+              // fdc.setFood(tec.text); 
               context.read<FDBloc>().add(SetFoodEvent(tec.text));
             },
             child: Text("save"),
