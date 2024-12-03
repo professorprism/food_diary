@@ -35,6 +35,38 @@ class FDState
    
 }
 
+class SetFoodEvent
+{ String food;
+  SetFoodEvent(this.food);
+
+}
+
+class FDBloc extends HydratedBloc<SetFoodEvent, FDState>
+{
+  FDBloc() : super( FDState("plum") )
+  {
+    on<SetFoodEvent> ( (event,emit) => emit(FDState(event.food))  );
+  }
+
+  // void setFood(String f ) { emit( FDState(f)); }
+ 
+
+  // converts the map form of FDState into an object.
+  // should have been called fromMap, as the Hydrated stuff
+  // will have already converted it from JSON to a map 
+  // (after fetching it from storage).
+  @override
+  FDState fromJson( Map<String,dynamic> map)
+  { return FDState.fromMap(map); }
+
+  // This is called on s AFTER emit(s).  Every time there is a new
+  // state, this function converts it to a Map and the Hydrated
+  // stuff takes it from there and stores is.  
+  @override
+  Map<String,dynamic> toJson( FDState state)
+  { return state.toMap(); }
+}
+
 class FDCubit extends Cubit<FDState> with HydratedMixin
 {
   FDCubit() : super( FDState("banana") );
