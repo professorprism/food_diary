@@ -58,7 +58,7 @@ class Splash extends StatelessWidget
           ),
           ElevatedButton
           ( onPressed: (){ fdc.setFood(tec.text); },
-            child: Text("submit"),
+            child: Text("save"),
           ),
         ],
       ),
