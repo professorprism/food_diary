@@ -1,3 +1,4 @@
 {
-  "cmake.sourceDirectory": "/Users/barrettkoster/usc/food_diary/linux"
+  "cmake.sourceDirectory": "/Users/barrettkoster/usc/food_diary/linux",
+  "java.compile.nullAnalysis.mode": "automatic"
 }
