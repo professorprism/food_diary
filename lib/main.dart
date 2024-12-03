@@ -23,12 +23,17 @@ class FoodDiary extends StatelessWidget
   Widget build(BuildContext context) 
   { return MaterialApp
     ( title: header,
-      home: BlocProvider<FDBloc> // <FDCubit>
-      ( create: (context) => FDBloc(), // FDCubit(),
-        child: BlocBuilder<FDBloc,FDState> // <FDCubit,FDState>
+      //home: BlocProvider<FDCubit>
+      home: BlocProvider<FDBloc>
+      ( 
+        // create: (context) => FDCubit(),
+        create: (context) => FDBloc(),
+        // child: BlocBuilder<FDCubit,FDState>
+        child: BlocBuilder<FDBloc,FDState> 
         ( builder: (context,state)
-          { FDBloc // FDCubit 
-            fdc =  BlocProvider.of<FDBloc>(context); // <FDCubit>(context);
+          { 
+            // FDCubit fdc = BlocProvider.of<FDCubit>(context>;
+            FDBloc fdc =  BlocProvider.of<FDBloc>(context);
             return  Splash(title: header, fdc:fdc);
           },
         ),
@@ -39,13 +44,15 @@ class FoodDiary extends StatelessWidget
 
 class Splash extends StatelessWidget 
 { final String title;
-  final FDBloc fdc; // FDCubit fdc;
+  // final FDCubit fdc;
+  final FDBloc fdc; 
   const Splash({super.key, required this.title, required this.fdc});
 
   @override
   Widget build(BuildContext context) 
-  { FDBloc // FDCubit 
-    fdc = BlocProvider.of<FDBloc>(context); // <FDCubit>(context);
+  { 
+    // FDCubit fdc = BlocProvider.of<FDCubit>(context>;
+    FDBloc fdc = BlocProvider.of<FDBloc>(context);
     FDState fds = fdc.state;
     TextEditingController tec = TextEditingController();
 
